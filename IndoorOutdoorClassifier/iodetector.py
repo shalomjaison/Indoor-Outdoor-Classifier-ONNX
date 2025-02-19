@@ -146,7 +146,7 @@ def test_iodetector():
         img = Image.open(img_file)
         input_img = V(tf(img).unsqueeze(0))
 
-        import pdb; pdb.set_trace();
+        # import pdb; pdb.set_trace();
         # torch.onnx.export(
         #     model,  # PyTorch model
         #     input_img,  # Input tensor for tracing
@@ -206,6 +206,20 @@ def run_iodetector(img_file):
         img = img.convert("RGB")
     # Print(np.array(img).shape)
     input_img = V(tf(img).unsqueeze(0))
+
+    # import pdb; pdb.set_trace();
+    # torch.onnx.export(
+    #     model,  # PyTorch model
+    #     input_img,  # Input tensor for tracing
+    #     "indoor_outdoor.onnx",  # Output ONNX file name
+    #     export_params=True,
+    #     do_constant_folding=True,
+    #     input_names=["input"],  # Define input name
+    #     output_names=["output"],  # Define output name
+    #     dynamic_axes={"input": {0: "batch_size"}, "output": {0: "batch_size"}},  # Support dynamic batch size
+    #     opset_version=11  # ONNX opset version
+    # )
+    
 
     # Forward pass
     logit = model.forward(input_img)

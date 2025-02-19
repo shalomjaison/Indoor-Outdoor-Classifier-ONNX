@@ -1,0 +1,30 @@
+[
+    [
+        {
+            "Environment Type": "Outdoor",
+            "Scene Category": [
+                {
+                    "Description": "courthouse",
+                    "Confidence": 0.0824
+                },
+                {
+                    "Description": "church/outdoor",
+                    "Confidence": 0.0664
+                },
+                {
+                    "Description": "temple/asia",
+                    "Confidence": 0.0575
+                },
+                {
+                    "Description": "embassy",
+                    "Confidence": 0.053
+                },
+                {
+                    "Description": "museum/outdoor",
+                    "Confidence": 0.0423
+                }
+            ],
+            "image_path": "C:\\Users\\jaiso\\Documents\\Personal Projects\\CS 596E\\Indoor-Outdoor-Classifier-ONNX\\Images\\IMG-06.jpg"
+        }
+    ]
+]

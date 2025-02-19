@@ -5,7 +5,7 @@ import os
 import onnxruntime as ort
 import numpy as np
 from torchvision import transforms as trn
-from iodetector import load_labels
+from .iodetector import load_labels
 
 class indoorOutdoorProcessing:
     def __init__(self):
@@ -38,13 +38,14 @@ class indoorOutdoorProcessing:
     def postprocess_single(self, model_output):
         """Postprocessing ONNX MODEL OUTPUT to determine Indoor/Outdoor and scene categories."""
         probs = np.exp(model_output[0]) / np.sum(np.exp(model_output[0]))  # Apply softmax manually in NumPy
-        sorted_indices = np.argsort(probs)[::-1]  # Sort in descending order
-
+        probs = probs.flatten()
+        sorted_indices = np.argsort(probs)[::-1] # Sort in descending order
+        # import pdb; pdb.set_trace();
         io_img = np.average(self.labels_IO[sorted_indices[:10]], weights=probs[sorted_indices[:10]])
         environment = "Indoor" if io_img < 0.5 else "Outdoor"
 
         scene_preds = [
-            {"Description": self.classes[idx], "Confidence": round(probs[idx], 4)}
+            {"Description": self.classes[idx], "Confidence": round(float(probs[idx]), 4)}
             for idx in sorted_indices[:5]
         ] # Similar to scene in iodetector.py
 
