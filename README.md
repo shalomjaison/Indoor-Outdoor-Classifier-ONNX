@@ -36,7 +36,7 @@ The server will run on http://127.0.0.1:5000 by default.
 ### Using the Frontend (RescueBox)
 - Open the RescueBox interface.
 - Register the model with the server's IP address (127.0.0.1) and port (5000).
-- Upload images to the "GeoLocator" model.
+- Upload images to the "IndoorOutdoorClassifier" model.
 - Provide an output JSON file path (e.g., /Users/username/Desktop/output.json).
 - Click "Run Model" to process the images and retrieve the results.
 
